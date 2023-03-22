@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool is_prime(int num);
+
+int main() {
+    int num;
+    printf("Enter a positive number: ");
+    scanf("%d", &num);
+    if (is_prime(num)) {
+        printf("The number %d is a prime number.\n", num);
+    } else {
+        printf("The number %d is not a prime number.\n", num);
+    }
+    return 0;
+}
+
+bool is_prime(int num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= num / 2; i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+output:
+Enter a positive number: 5
+The number 5 is a prime number.
