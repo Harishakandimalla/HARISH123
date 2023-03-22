@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+void findFactorial(int num, int *fact);
+
+int main() {
+    int num, fact = 1, *ptr;
+    printf("Input number: ");
+    scanf("%d", &num);
+    ptr = &fact;
+    findFactorial(num, ptr);
+    printf("Factorial of %d is: %d", num, fact);
+    return 0;
+}
+
+void findFactorial(int num, int *fact) {
+    int i;
+    for (i = 1; i <= num; i++) {
+        *fact *= i;
+    }
+}
+output:
+Input number: 5
+Factorial of 5 is: 120
