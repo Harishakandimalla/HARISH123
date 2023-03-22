@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char str[100];
+    int alphabets = 0, digits = 0, special_chars = 0;
+    printf("Input the string: ");
+    fgets(str, 100, stdin);
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (isalpha(str[i])) {
+            alphabets++;
+        } else if (isdigit(str[i])) {
+            digits++;
+        } else if (str[i] != ' ') {
+            special_chars++;
+        }
+    }
+    printf("Number of Alphabets in the string is : %d\n", alphabets);
+    printf("Number of Digits in the string is : %d\n", digits);
+    printf("Number of Special characters in the string is : %d\n", special_chars);
+    return 0;
+}
+output:
+Input the string: Welcome to w3resource.com
+Number of Alphabets in the string is : 21
+Number of Digits in the string is : 1
+Number of Special characters in the string is : 4
