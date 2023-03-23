@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LEN 100
+
+// Function to add two binary strings
+char* addBinary(char* s1, char* s2) {
+    // Allocate memory for the result string
+    char* res = (char*)malloc(MAX_LEN * sizeof(char));
+    memset(res, '0', MAX_LEN); // initialize the result string to '0'
+    res[MAX_LEN - 1] = '\0'; // set the last character to '\0'
+    
+    // Calculate the length of the two input strings
+    int n1 = strlen(s1), n2 = strlen(s2);
+    
+    // Initialize carry to 0
+    int carry = 0;
+    
+    // Traverse the strings from right to left and add the corresponding digits
+    for (int i = n1 - 1, j = n2 - 1, k = MAX_LEN - 2; k >= 0; i--, j--, k--) {
+        int sum = carry;
+        if (i >= 0) {
+            sum += s1[i] - '0';
+        }
+        if (j >= 0) {
+            sum += s2[j] - '0';
+        }
+        carry = sum / 2;
+        res[k] = (sum % 2) + '0';
+    }
+    
+    // If there is a carry after adding the last digits, add it to the result
+    if (carry > 0) {
+        res = strcat("1", res);
+    }
+    
+    return res;
+}
+
+int main() {
+    char s1[MAX_LEN], s2[MAX_LEN];
+    printf("Enter two binary strings: ");
+    scanf("%s %s", s1, s2);
+    char* res = addBinary(s1, s2);
+    printf("Result: %s\n", res);
+    free(res);
+    return 0;
+}
+test case1:
+input:
+s1 = "1101"
+s2 = "100101"
+
+output:
+Result: 110010
+
+test case2:
+input:
+s1 = "1111001001111101"
+s2 = "10000"
+
+output:
+Result: 1111001010001101
