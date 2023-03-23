@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int binary_search(int arr[], int low, int high, int x) {
+    if (high >= low) {
+        int mid = (high + low) / 2;
+        
+        if (arr[mid] == x) {
+            return mid;
+        }
+        else if (arr[mid] > x) {
+            return binary_search(arr, low, mid - 1, x);
+        }
+        else {
+            return binary_search(arr, mid + 1, high, x);
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {28, 12, 15, 122, 10, 33, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 15;
+    int result = binary_search(arr, 0, n - 1, x);
+    if (result == -1) {
+        printf("Given element %d is not found in the array.\n", x);
+    }
+    else {
+        printf("Given element %d is found at %dth position.\n", x, result + 1);
+    }
+    return 0;
+}
+output:
+Given element 15 is found at 3th position.
