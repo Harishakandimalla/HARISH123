@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+#define ROW 2
+#define COL 3
+
+void matrix_multiplication(int mat1[][COL], int mat2[][COL], int result[][COL]) {
+    int i, j, k;
+
+    // loop for multiplying matrices
+    for (i = 0; i < ROW; i++) {
+        for (j = 0; j < COL; j++) {
+            result[i][j] = 0;
+            for (k = 0; k < COL; k++) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+}
+
+void display_matrix(int mat[][COL]) {
+    int i, j;
+    for (i = 0; i < ROW; i++) {
+        for (j = 0; j < COL; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int mat1[ROW][COL] = {{1, 2, 3}, {4, 5, 6}};
+    int mat2[ROW][COL] = {{7, 8, 9}, {10, 11, 12}};
+    int result[ROW][COL];
+
+    // multiply matrices
+    matrix_multiplication(mat1, mat2, result);
+
+    printf("Matrix 1:\n");
+    display_matrix(mat1);
+
+    printf("Matrix 2:\n");
+    display_matrix(mat2);
+
+    printf("Resultant Matrix:\n");
+    display_matrix(result);
+
+    return 0;
+}
+output:
+Matrix 1:
+1 2 3
+4 5 6
+Matrix 2:
+7 8 9
+10 11 12
+Resultant Matrix:
+57  64  71
+138  154  170
