@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void calculate(int n, void (*s)(int), void (*c)(int)) {
+    // calculate square and cube of n using the functions s and c as arguments
+    (*s)(n);
+    (*c)(n);
+}
+
+void square(int n) {
+    printf("The square of %d is %d\n", n, n*n);
+}
+
+void cube(int n) {
+    printf("The cube of %d is %d\n", n, n*n*n);
+}
+
+int main() {
+    int num;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // call the calculate function with num as the argument and the square and cube functions as arguments
+    calculate(num, square, cube);
+
+    return 0;
+}
