@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_LINES 1000
+#define MAX_LENGTH 100
+
+int main() {
+    FILE *file;
+    char filename[MAX_LENGTH];
+    char line[MAX_LENGTH];
+    char *lines[MAX_LINES];
+    int i, num_lines;
+
+    // Ask the user for the filename to open
+    printf("Enter the file name to be opened: ");
+    scanf("%s", filename);
+
+    // Open the file in read mode
+    file = fopen(filename, "r");
+
+    // If the file cannot be opened, display an error message and exit
+    if (file == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+
+    // Read each line of the file and store it in the array
+    i = 0;
+    while (fgets(line, MAX_LENGTH, file) != NULL && i < MAX_LINES) {
+        // Remove the newline character at the end of the line
+        line[strcspn(line, "\n")] = '\0';
+
+        // Allocate memory for the line and copy it into the array
+        lines[i] = malloc(strlen(line) + 1);
+        strcpy(lines[i], line);
+
+
+        i++;
+    }
+    num_lines = i;
+
+    // Close the file
+    fclose(file);
+
+    // Display the lines that were read from the file
+    printf("The content of the file %s are:\n", filename);
+    for (i = 0; i < num_lines; i++) {
+        printf("%s\n", lines[i]);
+
+        // Free the memory allocated for each line
+        free(lines[i]);
+    }
+
+    return 0;
+}
+output:
+The content of the file test.txt  are :                                                                      
+ test line 1                                                                                                  
+ test line 2                                                                                                  
+ test line 3                                                                                                  
+ test line 4
+ 
+ test cases:
+ Sample.txt
+sample1.txt
+S123.txt
+S@12.txt
+Sample S.txt
+
+
+
+
+
+
