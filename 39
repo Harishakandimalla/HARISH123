@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+// Define employee structure
+struct employee {
+    int empid;
+    char ename[50];
+    float basic, hra, da, it, gross, netpay;
+};
+
+int main() {
+    int n, i;
+    float hra, da, it;
+    
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+    
+    // Create array of n employee structures
+    struct employee emp[n];
+    
+    // Read input for each employee and compute payroll
+    for(i = 0; i < n; i++) {
+        printf("\nEnter details of Employee %d:\n", i+1);
+        printf("EmpID: ");
+        scanf("%d", &emp[i].empid);
+        printf("Name: ");
+        scanf("%s", emp[i].ename);
+        printf("Basic Salary: ");
+        scanf("%f", &emp[i].basic);
+        
+        // Compute payroll for current employee
+        hra = 0.02 * emp[i].basic;
+        da = 0.01 * emp[i].basic;
+        emp[i].hra = hra;
+        emp[i].da = da;
+        emp[i].gross = emp[i].basic + hra + da;
+        it = 0.05 * emp[i].basic;
+        emp[i].it = it;
+        emp[i].netpay = emp[i].gross - it;
+    }
+    
+    // Print employee payroll details
+    printf("\nEmployee Payroll Details:\n");
+    printf("EmpID\tName\tBasic\tHRA\tDA\tGross\tIT\tNetPay\n");
+    for(i = 0; i < n; i++) {
+        printf("%d\t%s\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", 
+            emp[i].empid, emp[i].ename, emp[i].basic, emp[i].hra, emp[i].da,
+            emp[i].gross, emp[i].it, emp[i].netpay);
+    }
+    
+    return 0;
+}
+output:
+Enter the number of employees: 2
+Enter details of employee 1:
+Employee ID: 101
+Employee Name: John
+Basic Salary: 25000
+Enter details of employee 2:
+Employee ID: 102
+Employee Name: Jane
+Basic Salary: 30000
+
+Employee Payroll Details:
+-------------------------------------------------------
+EmpID	Ename	Basic	HRA	DA	IT	Gross	NetPay
+-------------------------------------------------------
+101	John	25000.00	500.00	250.00	1250.00	25750.00	24450.00
+102	Jane	30000.00	600.00	300.00	1500.00	30900.00	29400.00
+-------------------------------------------------------
