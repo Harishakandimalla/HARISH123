@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+// Define a structure to hold student information
+struct Student {
+    int number;
+    char grade;
+};
+
+int main() {
+    int n, num_A = 0, num_B = 0, num_C = 0, num_D = 0, num_F = 0;
+
+    // Taking input from the user
+    printf("Enter No. Students: ");
+    scanf("%d", &n);
+
+    // Create an array of students of size n
+    struct Student students[n];
+
+    // Loop over each student and take input for their number and grade
+    for (int i = 0; i < n; i++) {
+        printf("Enter student %d Number, Grade: ", i+1);
+        scanf("%d %c", &students[i].number, &students[i].grade);
+
+        // Count the number of As, Bs, Cs, Ds, and Fs
+        if (students[i].grade == 'A') {
+            num_A++;
+        }
+        else if (students[i].grade == 'B') {
+            num_B++;
+        }
+        else if (students[i].grade == 'C') {
+            num_C++;
+        }
+        else if (students[i].grade == 'D') {
+            num_D++;
+        }
+        else if (students[i].grade == 'F') {
+            num_F++;
+        }
+    }
+
+    // Print out the student details and the total number of As, Bs, Cs, Ds, and Fs
+    for (int i = 0; i < n; i++) {
+        printf("Student %d details:\n", i+1);
+        printf("Number: %d\n", students[i].number);
+        printf("Grade: %c\n", students[i].grade);
+        printf("Total no. A: %d, B: %d, C: %d, D: %d, F: %d\n", num_A, num_B, num_C, num_D, num_F);
+    }
+
+    return 0;
+}
+output:
+Enter No. Students: 1
+Enter student 1 Number, Grade: 2001 A
+Student 1 details:
+Number: 2001
+Grade: A
+Total no. A: 1, B: 0, C: 0, D: 0, F: 0
+
