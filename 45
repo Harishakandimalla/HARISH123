@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    const int x = 10; // A constant variable
+    int *ptr = (int*) &x; // Type casting to remove constness
+    
+    printf("Initial value of x: %d\n", x);
+    
+    *ptr = 20; // Modifying the value of x
+    
+    printf("Modified value of x: %d\n", x);
+    
+    return 0;
+}
+output
