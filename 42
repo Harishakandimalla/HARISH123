@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main() {
+    float python_marks, c_marks, maths_marks, physics_marks, total_marks, aggregate;
+
+    // Taking input from the user
+    printf("Enter the marks in python: ");
+    scanf("%f", &python_marks);
+    printf("Enter the marks in c programming: ");
+    scanf("%f", &c_marks);
+    printf("Enter the marks in Mathematics: ");
+    scanf("%f", &maths_marks);
+    printf("Enter the marks in Physics: ");
+    scanf("%f", &physics_marks);
+
+    // Calculating the total and aggregate
+    total_marks = python_marks + c_marks + maths_marks + physics_marks;
+    aggregate = total_marks / 4;
+
+    // Checking the grade obtained by the student
+    if (aggregate >= 75) {
+        printf("DISTINCTION\n");
+    }
+    else if (aggregate >= 60 && aggregate < 75) {
+        printf("FIRST DIVISION\n");
+    }
+    else if (aggregate >= 50 && aggregate < 60) {
+        printf("SECOND DIVISION\n");
+    }
+    else if (aggregate >= 40 && aggregate < 50) {
+        printf("THIRD DIVISION\n");
+    }
+    else {
+        printf("FAIL\n");
+    }
+
+    return 0;
+}
+output:
+Enter the marks in python: 90
+Enter the marks in c programming: 91
+Enter the marks in Mathematics: 92
+Enter the marks in Physics: 93
+DISTINCTION
